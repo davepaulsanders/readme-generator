@@ -55,64 +55,76 @@ const tableOfContents = (readMeData) => {
 };
 
 const remainingQuestions = (readMeData) => {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "installation",
-      message: "Please enter installation instructions for the project",
-      validate: (heading) => {
-        if (heading) {
-          return true;
-        } else {
-          return false;
-        }
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "installation",
+        message: "Please enter installation instructions for the project",
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: "input",
-      name: "usage",
-      message: "Please enter example usages",
-      validate: (heading) => {
-        if (heading) {
-          return true;
-        } else {
-          return false;
-        }
+      {
+        type: "input",
+        name: "usage",
+        message: "Please enter example usages",
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "Please enter the emails of contributers separated by spaces",
-      validate: (heading) => {
-        if (heading) {
-          return true;
-        } else {
-          return false;
-        }
+      {
+        type: "input",
+        name: "email",
+        message: "Please enter the emails of contributers separated by spaces",
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
-    },
-    {
-      type: "input",
-      name: "githubUserName",
-      message:
-        "Please enter the github usernames of contributers separated by spaces",
-      validate: (heading) => {
-        if (heading) {
-          return true;
-        } else {
-          return false;
-        }
+      {
+        type: "input",
+        name: "githubUserName",
+        message:
+          "Please enter the github usernames of contributers separated by spaces",
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
-    },
-  ]);
+      {
+        type: "list",
+        name: "license",
+        message: "Please choose a licence",
+        choices: ["MIT", "ISC", "CC"],
+      },
+    ])
+    .then((answers) => {
+      for (key in answers) {
+        readMeData[key] = answers[key];
+      }
+      console.log(readMeData);
+    });
 };
 
-projectNameDescription()
-  .then(tableOfContents)
-  .then((answers) => {
-    return templateCreator(answers);
-  })
-  .then((fileTemplate) => {
-    createFile(fileTemplate);
-  });
+projectNameDescription().then(tableOfContents).then(remainingQuestions);
+// .then((answers) => {
+//   return templateCreator(answers);
+// })
+// .then((fileTemplate) => {
+//   createFile(fileTemplate);
+// });
