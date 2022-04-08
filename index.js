@@ -117,14 +117,16 @@ const remainingQuestions = (readMeData) => {
       for (key in answers) {
         readMeData[key] = answers[key];
       }
-      console.log(readMeData);
+      return readMeData;
     });
 };
 
-projectNameDescription().then(tableOfContents).then(remainingQuestions);
-// .then((answers) => {
-//   return templateCreator(answers);
-// })
-// .then((fileTemplate) => {
-//   createFile(fileTemplate);
-// });
+projectNameDescription()
+  .then(tableOfContents)
+  .then(remainingQuestions)
+  .then((answers) => {
+    return templateCreator(answers);
+  })
+  .then((fileTemplate) => {
+    createFile(fileTemplate);
+  });
