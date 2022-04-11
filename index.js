@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const templateCreator = require("./src/template");
 const createFile = require("./utils/fileCreation");
+
+
 const projectNameDescription = () => {
   return inquirer.prompt([
     {
@@ -29,29 +31,6 @@ const projectNameDescription = () => {
       },
     },
   ]);
-};
-
-const tableOfContents = (readMeData) => {
-  return inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "tableHeadings",
-        message:
-          "Please enter your table of contents headings (spaces in between)!",
-        validate: (heading) => {
-          if (heading) {
-            return true;
-          } else {
-            return false;
-          }
-        },
-      },
-    ])
-    .then((tableOfContentsData) => {
-      readMeData.tableOfContents = tableOfContentsData.tableHeadings.split(" ");
-      return readMeData;
-    });
 };
 
 const remainingQuestions = (readMeData) => {
@@ -122,7 +101,6 @@ const remainingQuestions = (readMeData) => {
 };
 
 projectNameDescription()
-  .then(tableOfContents)
   .then(remainingQuestions)
   .then((answers) => {
     return templateCreator(answers);

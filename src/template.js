@@ -1,18 +1,22 @@
-const { tableCreator, badgeGenerator } = require("./readmesections");
+const {
+  renderTableOfContents,
+  renderLicenseBadge,
+  renderEmailandGithub,
+} = require("../utils/generateMarkdown");
+
 const templateCreator = (readMeData) => {
   console.log(readMeData);
   const { title, description, installation, usage, license } = readMeData;
   const template = `
-
 # ${title}
 
-${badgeGenerator(readMeData)}
+${renderLicenseBadge(readMeData)}
+
+${renderTableOfContents(readMeData)}
 
 ## Description
 
 ${description}
-
-${tableCreator(readMeData)}
 
 ## Installation
 
@@ -24,7 +28,7 @@ ${usage}
 
 ## License
 
-${license}
+This project is licensed under ${license}
 
 ## Contributing
 
@@ -32,8 +36,7 @@ ${license}
 
 ## Questions
 
-If you have any questions, you can reach us at:
-
+${renderEmailandGithub(readMeData)}
 `;
   return template;
 };
