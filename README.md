@@ -4,7 +4,7 @@ This project uses Node to build a README.md based off responses to prompts in th
 
 ## Installation
 
-Run this program by cloning the repository, navigating to the project root directory and entering `npm install` into the terminal.
+Install this program by cloning the repository, navigating to the project root directory and entering `npm install` into the terminal to install required dependencies.
 
 ## Usage
 
