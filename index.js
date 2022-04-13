@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const templateCreator = require("./src/template");
-const createFile = require("./utils/fileCreation");
+const { createFolder, createFile } = require("./utils/fileCreation");
 
 // lists of questions to create readme
 const readMeQuestions = () => {
@@ -124,14 +124,14 @@ const readMeQuestions = () => {
 };
 
 // asks questions
+
 readMeQuestions()
   .then((answers) => {
     // Create template from project answers
+    console.log(answers);
     return templateCreator(answers);
   })
   .then((fileTemplate) => {
-    // Build the file in dist foler
-    createFile(fileTemplate).then((response) => {
-      console.log(response.message);
-    });
+    createFolder();
+    createFile(fileTemplate);
   });

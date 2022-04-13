@@ -1,5 +1,20 @@
 const fs = require("fs");
 
+const createFolder = () => {
+  const distFolder = "dist";
+  return new Promise((resolve, reject) => {
+    fs.mkdirSync(distFolder, (err) => {
+      if (err) {
+        reject(err);
+        return "Sorry, folder could not be created!";
+      }
+      resolve({
+        ok: tfs.runcate,
+        message: "dist folder created...",
+      });
+    });
+  });
+};
 const createFile = (pageString) => {
   return new Promise((resolve, reject) => {
     fs.writeFile("./dist/README.md", pageString, (err) => {
@@ -15,4 +30,4 @@ const createFile = (pageString) => {
   });
 };
 
-module.exports = createFile;
+module.exports = { createFolder, createFile };
