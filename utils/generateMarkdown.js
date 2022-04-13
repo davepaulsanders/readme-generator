@@ -1,3 +1,4 @@
+// Rendering table of contents, in this case, all fields are required
 const renderTableOfContents = (readMeData) => {
   if (!readMeData) {
     return "";
@@ -21,6 +22,7 @@ const renderTableOfContents = (readMeData) => {
 `;
 };
 
+// rendering License Badge
 const renderLicenseBadge = (readMeData) => {
   switch (readMeData.license) {
     case "MIT":
@@ -38,7 +40,9 @@ const renderLicenseBadge = (readMeData) => {
   }
 };
 
+// Rendering questions section
 const renderEmailandGithub = (readMeData) => {
+  // splitting github and email strings into arrays, then mapping them to HTML with line breaks
   const gitHub = readMeData.githubUserName.split(" ");
   const emails = readMeData.email.split(" ");
   const gitHubLink = gitHub.map((user) => {
@@ -47,6 +51,7 @@ const renderEmailandGithub = (readMeData) => {
   const emailLineBreak = emails.map((email) => {
     return `${email}<br>\n`;
   });
+
   return `
 Find us on GitHub at: \n\n
 ${gitHubLink.join("")}

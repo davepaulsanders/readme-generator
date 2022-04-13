@@ -4,8 +4,8 @@ const {
   renderEmailandGithub,
 } = require("../utils/generateMarkdown");
 
+// Building general template for the readme, importing functions from generateMarkdown for sections that require more parsing
 const templateCreator = (readMeData) => {
-  console.log(readMeData);
   const {
     title,
     description,

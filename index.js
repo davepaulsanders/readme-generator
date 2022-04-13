@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const templateCreator = require("./src/template");
 const createFile = require("./utils/fileCreation");
 
+// lists of questions to create readme
 const readMeQuestions = () => {
   return inquirer
     .prompt([
@@ -26,6 +27,7 @@ const readMeQuestions = () => {
           if (projectInfo) {
             return true;
           } else {
+            console.log("Please enter a description");
             return false;
           }
         },
@@ -34,10 +36,11 @@ const readMeQuestions = () => {
         type: "input",
         name: "installation",
         message: "Please enter the command to install dependencies",
-        validate: (heading) => {
-          if (heading) {
+        validate: (installation) => {
+          if (installation) {
             return true;
           } else {
+            console.log("Please enter installation commands!");
             return false;
           }
         },
@@ -46,10 +49,11 @@ const readMeQuestions = () => {
         type: "input",
         name: "usage",
         message: "Please enter command to run program",
-        validate: (heading) => {
-          if (heading) {
+        validate: (usage) => {
+          if (usage) {
             return true;
           } else {
+            console.log("Please enter commands to run!");
             return false;
           }
         },
@@ -58,10 +62,11 @@ const readMeQuestions = () => {
         type: "input",
         name: "email",
         message: "Please enter the emails of contributers separated by spaces",
-        validate: (heading) => {
-          if (heading) {
+        validate: (email) => {
+          if (email) {
             return true;
           } else {
+            console.log("Please enter at least one email!");
             return false;
           }
         },
@@ -71,10 +76,11 @@ const readMeQuestions = () => {
         name: "githubUserName",
         message:
           "Please enter the github usernames of contributers separated by spaces",
-        validate: (heading) => {
-          if (heading) {
+        validate: (gitHub) => {
+          if (gitHub) {
             return true;
           } else {
+            console.log("Please enter at least one github username!");
             return false;
           }
         },
@@ -83,10 +89,11 @@ const readMeQuestions = () => {
         type: "input",
         name: "contributions",
         message: "Please enter details about contributions to the project",
-        validate: (heading) => {
-          if (heading) {
+        validate: (contributions) => {
+          if (contributions) {
             return true;
           } else {
+            console.log("Please enter instructions for contributers");
             return false;
           }
         },
@@ -95,10 +102,11 @@ const readMeQuestions = () => {
         type: "input",
         name: "tests",
         message: "Please enter the command used to run tests",
-        validate: (heading) => {
-          if (heading) {
+        validate: (tests) => {
+          if (tests) {
             return true;
           } else {
+            console.log("You must enter a command to run tests!");
             return false;
           }
         },
@@ -108,13 +116,6 @@ const readMeQuestions = () => {
         name: "license",
         message: "Please choose a licence",
         choices: ["MIT", "ISC", "CC", "Apache", "IBM"],
-        validate: (heading) => {
-          if (heading) {
-            return true;
-          } else {
-            return false;
-          }
-        },
       },
     ])
     .then((answers) => {
@@ -122,13 +123,13 @@ const readMeQuestions = () => {
     });
 };
 
+// asks questions
 readMeQuestions()
   .then((answers) => {
     // Create template from project answers
-    console.log(answers);
     return templateCreator(answers);
   })
   .then((fileTemplate) => {
-    // Build the file
+    // Build the file in dist foler
     createFile(fileTemplate);
   });
