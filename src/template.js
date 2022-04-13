@@ -6,7 +6,15 @@ const {
 
 const templateCreator = (readMeData) => {
   console.log(readMeData);
-  const { title, description, installation, usage, license } = readMeData;
+  const {
+    title,
+    description,
+    installation,
+    usage,
+    license,
+    tests,
+    contributions,
+  } = readMeData;
   const template = `
 # ${title}
 
@@ -20,25 +28,45 @@ ${description}
 
 ## Installation
 
+\`\`\`
+
 ${installation}
+
+\`\`\`
 
 ## Usage
 
+To run this program, open a terminal in the root directory and enter
+
+\`\`\`
+
 ${usage}
+
+\`\`\`
+
+
+## Tests
+
+To run tests, open a terminal in the root directory and enter
+
+\`\`\`
+
+${tests}
+
+\`\`\`
+
+## Contributing
+
+${contributions}
+
+## Questions
+
+${renderEmailandGithub(readMeData)}
 
 ## License
 
 This project is licensed under ${license}
 
-## Contributing
-
-## Tests
-
-``````
-
-## Questions
-
-${renderEmailandGithub(readMeData)}
 `;
   return template;
 };

@@ -33,7 +33,7 @@ const readMeQuestions = () => {
       {
         type: "input",
         name: "installation",
-        message: "Please enter installation instructions for the project",
+        message: "Please enter the command to install dependencies",
         validate: (heading) => {
           if (heading) {
             return true;
@@ -45,7 +45,7 @@ const readMeQuestions = () => {
       {
         type: "input",
         name: "usage",
-        message: "Please enter example usages",
+        message: "Please enter command to run program",
         validate: (heading) => {
           if (heading) {
             return true;
@@ -80,10 +80,41 @@ const readMeQuestions = () => {
         },
       },
       {
+        type: "input",
+        name: "contributions",
+        message: "Please enter details about contributions to the project",
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+      },
+      {
+        type: "input",
+        name: "tests",
+        message: "Please enter the command used to run tests",
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+      },
+      {
         type: "list",
         name: "license",
         message: "Please choose a licence",
         choices: ["MIT", "ISC", "CC", "Apache", "IBM"],
+        validate: (heading) => {
+          if (heading) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
     ])
     .then((answers) => {
