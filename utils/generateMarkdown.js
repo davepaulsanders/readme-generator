@@ -2,7 +2,6 @@ const renderTableOfContents = (readMeData) => {
   if (!readMeData) {
     return "";
   }
-
   return `
 ## Table of Contents
 

@@ -2,7 +2,6 @@ const inquirer = require("inquirer");
 const templateCreator = require("./src/template");
 const createFile = require("./utils/fileCreation");
 
-
 const projectNameDescription = () => {
   return inquirer.prompt([
     {
@@ -103,8 +102,10 @@ const remainingQuestions = (readMeData) => {
 projectNameDescription()
   .then(remainingQuestions)
   .then((answers) => {
+    // Create template from project answers
     return templateCreator(answers);
   })
   .then((fileTemplate) => {
+    // Build the file
     createFile(fileTemplate);
   });
