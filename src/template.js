@@ -6,6 +6,7 @@ const {
 
 // Building general template for the readme, importing functions from generateMarkdown for sections that require more parsing
 const templateCreator = (readMeData) => {
+  // destructing data from inquirer prompt
   const {
     title,
     description,

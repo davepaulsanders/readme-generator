@@ -131,5 +131,7 @@ readMeQuestions()
   })
   .then((fileTemplate) => {
     // Build the file in dist foler
-    createFile(fileTemplate);
+    createFile(fileTemplate).then((response) => {
+      console.log(response.message);
+    });
   });

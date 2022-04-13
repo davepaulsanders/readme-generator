@@ -5,11 +5,11 @@ const createFile = (pageString) => {
     fs.writeFile("./dist/README.md", pageString, (err) => {
       if (err) {
         reject(err);
-        return;
+        return "File couldn't be created!";
       }
       resolve({
         ok: true,
-        message: "File Created",
+        message: "README created in dist folder!",
       });
     });
   });
