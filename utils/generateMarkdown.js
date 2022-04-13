@@ -45,12 +45,12 @@ const renderEmailandGithub = (readMeData) => {
     return `<a href='https://github.com/${user}'>${user}</a><br>\n`;
   });
   const emailLineBreak = emails.map((email) => {
-    return `${email}\n`;
+    return `${email}<br>\n`;
   });
   return `
 Find us on GitHub at: \n\n
 ${gitHubLink.join("")}
-And email us at: \n\n
+Or email us at: \n\n
 ${emailLineBreak.join("")}`;
 };
 
