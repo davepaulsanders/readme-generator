@@ -1,6 +1,10 @@
 const inquirer = require("inquirer");
 const templateCreator = require("./src/template");
-const { createFolder, createFile } = require("./utils/fileCreation");
+const {
+  folderExist,
+  createFolder,
+  createFile,
+} = require("./utils/fileCreation");
 
 // lists of questions to create readme
 const readMeQuestions = () => {
@@ -130,6 +134,12 @@ readMeQuestions()
     return templateCreator(answers);
   })
   .then((fileTemplate) => {
-    // builds the dist folder and creates the readme inside
-    createFolder().then(createFile(fileTemplate));
+    // check if dist folder has already been built
+    const exists = folderExist();
+    if (exists) {
+      createFile(fileTemplate);
+    } else {
+      // if it hasn't, build the folder first
+      createFolder().then(createFile(fileTemplate));
+    }
   });

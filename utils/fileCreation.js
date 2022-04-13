@@ -1,15 +1,21 @@
 const fs = require("fs");
 
+const folderExist = () => {
+  if (fs.existsSync("dist")) {
+    return true;
+  } else {
+    return false;
+  }
+};
 const createFolder = () => {
-  const distFolder = "dist";
   return new Promise((resolve, reject) => {
-    fs.mkdirSync(distFolder, (err) => {
+    fs.mkdirSync("dist", (err) => {
       if (err) {
         reject(err);
         return "Sorry, folder could not be created!";
       }
       resolve({
-        ok: tfs.runcate,
+        ok: true,
         message: "dist folder created...",
       });
     });
@@ -30,4 +36,4 @@ const createFile = (pageString) => {
   });
 };
 
-module.exports = { createFolder, createFile };
+module.exports = { folderExist, createFolder, createFile };
