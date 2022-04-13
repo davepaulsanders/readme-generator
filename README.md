@@ -1,4 +1,4 @@
-# readme-generator
+# README Generator
 
 This project uses Node to build a README.md based off responses to prompts in the terminal using the Inquirer module.
 

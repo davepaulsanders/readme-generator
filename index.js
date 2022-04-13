@@ -2,39 +2,34 @@ const inquirer = require("inquirer");
 const templateCreator = require("./src/template");
 const createFile = require("./utils/fileCreation");
 
-const projectNameDescription = () => {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "title",
-      message: "What is the name of your project?",
-      validate: (nameInput) => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log("Please enter your project name!");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "description",
-      message: "Please enter a description of your project!",
-      validate: (projectInfo) => {
-        if (projectInfo) {
-          return true;
-        } else {
-          return false;
-        }
-      },
-    },
-  ]);
-};
-
-const remainingQuestions = (readMeData) => {
+const readMeQuestions = () => {
   return inquirer
     .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "What is the name of your project?",
+        validate: (nameInput) => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log("Please enter your project name!");
+            return false;
+          }
+        },
+      },
+      {
+        type: "input",
+        name: "description",
+        message: "Please enter a description of your project!",
+        validate: (projectInfo) => {
+          if (projectInfo) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+      },
       {
         type: "input",
         name: "installation",
@@ -88,21 +83,18 @@ const remainingQuestions = (readMeData) => {
         type: "list",
         name: "license",
         message: "Please choose a licence",
-        choices: ["MIT", "ISC", "CC"],
+        choices: ["MIT", "ISC", "CC", "Apache", "IBM"],
       },
     ])
     .then((answers) => {
-      for (key in answers) {
-        readMeData[key] = answers[key];
-      }
-      return readMeData;
+      return answers;
     });
 };
 
-projectNameDescription()
-  .then(remainingQuestions)
+readMeQuestions()
   .then((answers) => {
     // Create template from project answers
+    console.log(answers);
     return templateCreator(answers);
   })
   .then((fileTemplate) => {
