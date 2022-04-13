@@ -124,14 +124,12 @@ const readMeQuestions = () => {
 };
 
 // asks questions
-
 readMeQuestions()
   .then((answers) => {
     // Create template from project answers
-    console.log(answers);
     return templateCreator(answers);
   })
   .then((fileTemplate) => {
-    createFolder();
-    createFile(fileTemplate);
+    // builds the dist folder and creates the readme inside
+    createFolder().then(createFile(fileTemplate));
   });
