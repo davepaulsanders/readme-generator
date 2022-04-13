@@ -20,16 +20,14 @@ const templateCreator = (readMeData) => {
 # ${title}
 
 ${renderLicenseBadge(readMeData)}
-
 ${renderTableOfContents(readMeData)}
-
 ## Description
 
 ${description}
 
 ## Installation
 
-\`\`\`
+\`\`\`zsh
 
 ${installation}
 
@@ -39,18 +37,17 @@ ${installation}
 
 To run this program, open a terminal in the root directory and enter
 
-\`\`\`
+\`\`\`zsh
 
 ${usage}
 
 \`\`\`
 
-
 ## Tests
 
 To run tests, open a terminal in the root directory and enter
 
-\`\`\`
+\`\`\`zsh
 
 ${tests}
 
@@ -63,13 +60,10 @@ ${contributions}
 ## Questions
 
 If you have questions about ${title}
-
-${renderEmailandGithub(readMeData)}
-
+${renderEmailandGithub(readMeData)}\n
 ## License
 
 This project is licensed under ${license}
-
 `;
   return template;
 };

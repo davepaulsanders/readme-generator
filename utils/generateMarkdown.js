@@ -46,16 +46,19 @@ const renderEmailandGithub = (readMeData) => {
   const gitHub = readMeData.githubUserName.split(" ");
   const emails = readMeData.email.split(" ");
   const gitHubLink = gitHub.map((user) => {
-    return `<a href='https://github.com/${user}'>${user}</a><br>\n`;
+    return `
+[${user}](https://github.com/${user})  `;
   });
   const emailLineBreak = emails.map((email) => {
-    return `${email}<br>\n`;
+    return `
+${email}  `;
   });
 
   return `
-Find us on GitHub at: \n\n
+Find us on GitHub at:  
 ${gitHubLink.join("")}
-Or email us at: \n\n
+
+Or email us at:  
 ${emailLineBreak.join("")}`;
 };
 
