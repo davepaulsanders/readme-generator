@@ -11,7 +11,6 @@ const readMeQuestions = () => {
   return inquirer
     .prompt([
       {
-        type: "input",
         name: "title",
         message: "What is the name of your project?",
         validate: (nameInput) => {
@@ -24,7 +23,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "description",
         message: "Please enter a description of your project!",
         validate: (projectInfo) => {
@@ -37,7 +35,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "installation",
         message: "Please enter the command to install dependencies",
         validate: (installation) => {
@@ -50,7 +47,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "usage",
         message: "Please enter command to run program",
         validate: (usage) => {
@@ -63,7 +59,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "email",
         message: "Please enter the emails of contributers separated by spaces",
         validate: (email) => {
@@ -76,7 +71,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "githubUserName",
         message:
           "Please enter the github usernames of contributers separated by spaces",
@@ -90,7 +84,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "contributions",
         message: "Please enter details about contributions to the project",
         validate: (contributions) => {
@@ -103,7 +96,6 @@ const readMeQuestions = () => {
         },
       },
       {
-        type: "input",
         name: "tests",
         message: "Please enter the command used to run tests",
         validate: (tests) => {
